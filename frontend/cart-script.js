@@ -4,6 +4,7 @@ const API_BASE_URL = 'http://localhost:5000/api';
 // Variables globales
 let cartId = localStorage.getItem('cartId') || null;
 let currentCart = null;
+  
 
 // Inicialización de la aplicación
 document.addEventListener('DOMContentLoaded', function() {
