@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Ajustes - Ortega Turismo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2E7D32; }
+        h2 { color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; }
+        .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2E7D32; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test de Funcionalidades - Ajustes</h1>
+    
+    <div class="test-section">
+        <h2>📋 Instrucciones</h2>
+        <p>Este archivo prueba que todas las funcionalidades de ajustes estén correctamente implementadas.</p>
+        <ol>
+            <li>Abre <code>index.html</code> en tu navegador</li>
+            <li>Inicia sesión con: <strong>usuario</strong> / <strong>1234</strong></li>
+            <li>Ve a: <strong>Ajustes → Ajustes de Usuario</strong></li>
+            <li>Verifica cada sección abajo</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>💳 Métodos de Pago</h2>
+        <p><strong>Ubicación:</strong> Ajustes de Usuario → Sección "💳 Métodos de Pago"</p>
+        
+        <h3>✅ Checklist:</h3>
+        <ul>
+            <li>[ ] Veo la sección "💳 Métodos de Pago"</li>
+            <li>[ ] Veo el formulario con selector de tipo</li>
+            <li>[ ] Puedo seleccionar: Tarjeta / Efectivo / Transferencia</li>
+            <li>[ ] Puedo escribir detalles (ej: **** 1234)</li>
+            <li>[ ] Botón "Agregar" funciona</li>
+            <li>[ ] El método aparece en la lista</li>
+            <li>[ ] Puedo hacer clic en "Activar"</li>
+            <li>[ ] Solo un método está activo a la vez</li>
+            <li>[ ] Puedo eliminar un método con 🗑️</li>
+            <li>[ ] Los métodos persisten al recargar</li>
+        </ul>
+
+        <h3>🧪 Prueba Rápida:</h3>
+        <div class="code">
+1. Agregar Tarjeta: **** 1234
+2. Agregar Efectivo: Pago en destino
+3. Activar Efectivo
+4. Recargar página
+5. Verificar que Efectivo sigue activo
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📅 Calendario de Reservas</h2>
+        <p><strong>Ubicación:</strong> Ajustes de Usuario → Sección "📅 Mi Calendario"</p>
+        
+        <h3>✅ Checklist:</h3>
+        <ul>
+            <li>[ ] Veo el calendario del mes actual</li>
+            <li>[ ] Veo los días de la semana (Dom-Sáb)</li>
+            <li>[ ] Veo todos los días del mes</li>
+            <li>[ ] El día actual está marcado</li>
+            <li>[ ] Botones ◀ ▶ funcionan</li>
+            <li>[ ] Puedo hacer clic en un día</li>
+            <li>[ ] Aparece prompt para tipo de reserva</li>
+            <li>[ ] Puedo escribir: 1 (Hotel), 2 (Lugar), 3 (Transporte)</li>
+            <li>[ ] El día se marca visualmente</li>
+            <li>[ ] Aparece en "Próximas Reservas"</li>
+            <li>[ ] Puedo eliminar una reserva</li>
+            <li>[ ] Las reservas persisten al recargar</li>
+        </ul>
+
+        <h3>🧪 Prueba Rápida:</h3>
+        <div class="code">
+1. Clic en un día futuro
+2. Escribir: 1 (Hotel)
+3. Verificar que el día se marca
+4. Verificar que aparece en "Próximas Reservas"
+5. Navegar a otro mes con ▶
+6. Volver con ◀
+7. Verificar que la reserva sigue ahí
+8. Clic en el día con reserva
+9. Confirmar eliminar
+10. Verificar que desaparece
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🏨 Gestión de Contenido (Solo Admin)</h2>
+        <p><strong>Ubicación:</strong> Ajustes de Administrador → "🏨 Gestión de Contenido"</p>
+        <p><strong>⚠️ Requiere:</strong> Cerrar sesión e iniciar como <strong>admin</strong> / <strong>admin</strong></p>
+        
+        <h3>✅ Checklist:</h3>
+        <ul>
+            <li>[ ] Veo 4 tabs: Lugares / Hoteles / Restaurantes / Transporte</li>
+            <li>[ ] Puedo cambiar entre tabs</li>
+            <li>[ ] Veo lista de contenido actual</li>
+            <li>[ ] Cada item tiene imagen, nombre, descripción</li>
+            <li>[ ] Cada item tiene botón 🗑️</li>
+            <li>[ ] Botón "➕ Agregar" funciona</li>
+            <li>[ ] Se abre modal con formulario</li>
+            <li>[ ] Puedo completar: Nombre, URL Imagen, Descripción, Precio</li>
+            <li>[ ] Botón "Agregar" en modal funciona</li>
+            <li>[ ] El nuevo item aparece en la lista</li>
+            <li>[ ] Voy a ventana principal (Lugares/Hoteles/etc)</li>
+            <li>[ ] El nuevo item aparece en el grid</li>
+            <li>[ ] Puedo eliminar el item</li>
+            <li>[ ] Desaparece de todas partes</li>
+        </ul>
+
+        <h3>🧪 Prueba Rápida:</h3>
+        <div class="code">
+1. Login como admin
+2. Ajustes → Ajustes de Administrador
+3. Tab "🏞️ Lugares"
+4. Clic "➕ Agregar Lugar"
+5. Nombre: "Test Mirador"
+6. Imagen: https://images.unsplash.com/photo-1506905925346-21bda4d32df4
+7. Descripción: "Lugar de prueba"
+8. Precio: 0
+9. Clic "Agregar"
+10. Verificar que aparece en lista
+11. Ir a ventana "Lugares"
+12. Verificar que aparece en grid
+13. Volver a admin
+14. Eliminar "Test Mirador"
+15. Verificar que desaparece
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 Otras Funcionalidades de Ajustes</h2>
+        
+        <h3>Cambiar Tema:</h3>
+        <ul>
+            <li>[ ] Botón "Cambiar a Oscuro" funciona</li>
+            <li>[ ] La interfaz cambia a tema oscuro</li>
+            <li>[ ] Botón cambia a "Cambiar a Claro"</li>
+            <li>[ ] Persiste al recargar</li>
+        </ul>
+
+        <h3>Mostrar/Ocultar Imágenes:</h3>
+        <ul>
+            <li>[ ] Botón "Ocultar Imágenes" funciona</li>
+            <li>[ ] Las imágenes desaparecen</li>
+            <li>[ ] Botón cambia a "Mostrar Imágenes"</li>
+            <li>[ ] Persiste al recargar</li>
+        </ul>
+
+        <h3>Gestión de Cuenta:</h3>
+        <ul>
+            <li>[ ] Veo mi usuario actual</li>
+            <li>[ ] Botón "Cerrar Sesión" funciona</li>
+            <li>[ ] Me redirige al login</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>✅ Resultado Final</h2>
+        <p>Si todas las funcionalidades funcionan correctamente, verás:</p>
+        <div class="status success">
+            ✅ <strong>TODAS LAS FUNCIONALIDADES ESTÁN OPERATIVAS</strong><br>
+            El sistema de ajustes está 100% funcional y listo para usar.
+        </div>
+        
+        <p>Si algo no funciona:</p>
+        <div class="status error">
+            ❌ <strong>PROBLEMA DETECTADO</strong><br>
+            Abre la consola del navegador (F12) y busca errores en rojo.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Solución de Problemas</h2>
+        
+        <h3>Si no ves las secciones de ajustes:</h3>
+        <ol>
+            <li>Verifica que iniciaste sesión correctamente</li>
+            <li>Verifica que estás en "Ajustes → Ajustes de Usuario"</li>
+            <li>Desplázate hacia abajo en la página</li>
+            <li>Abre consola (F12) y busca errores</li>
+        </ol>
+
+        <h3>Si los métodos de pago no aparecen:</h3>
+        <ol>
+            <li>Verifica que localStorage esté habilitado</li>
+            <li>Intenta agregar un método nuevo</li>
+            <li>Recarga la página</li>
+        </ol>
+
+        <h3>Si el calendario no se muestra:</h3>
+        <ol>
+            <li>Verifica que estás en Ajustes de Usuario</li>
+            <li>Busca la sección "📅 Mi Calendario"</li>
+            <li>Abre consola y busca errores</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>📞 Soporte</h2>
+        <p>Si después de seguir todos los pasos algo no funciona:</p>
+        <ol>
+            <li>Abre la consola del navegador (F12)</li>
+            <li>Ve a la pestaña "Console"</li>
+            <li>Copia cualquier mensaje de error en rojo</li>
+            <li>Reporta el error con el mensaje completo</li>
+        </ol>
+    </div>
+
+    <script>
+        console.log('✅ Test de Ajustes cargado correctamente');
+        console.log('📋 Sigue las instrucciones en la página para probar cada funcionalidad');
+    </script>
+</body>
+</html>

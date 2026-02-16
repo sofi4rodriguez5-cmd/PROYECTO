@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Visual - Descubre Ortega</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🌿 Descubre Ortega</h1>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#lugares" class="nav-link">Lugares</a></li>
+                    <li><a href="#hoteles" class="nav-link">Hoteles</a></li>
+                    <li><a href="#restaurantes" class="nav-link">Restaurantes</a></li>
+                    <li><a href="#transporte" class="nav-link">Transporte</a></li>
+                    <li><a href="#itinerario" class="nav-link cart-link">🛒 Mi Itinerario (<span id="cart-count">3</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Bienvenido a Ortega</h1>
+                <p class="hero-subtitle">Descubre la belleza natural y cultural del corazón del Tolima</p>
+                <div class="cta-buttons">
+                    <a href="#lugares" class="cta-button">Explorar Lugares</a>
+                    <a href="#hoteles" class="cta-button secondary">Ver Alojamiento</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="lugares" class="section lugares-section">
+            <div class="container">
+                <h2 class="section-title">🏞️ Lugares Turísticos</h2>
+                <p class="section-subtitle">Descubre los sitios más hermosos de Ortega</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Cerro de los Abechuchos" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Cerro de los Abechuchos</h3>
+                            <p class="card-description">Majestuoso cerro ideal para senderismo y vistas panorámicas del municipio.</p>
+                            <button class="btn btn-primary">Agregar al itinerario</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop" alt="Laguna de Ortega" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Laguna de Ortega</h3>
+                            <p class="card-description">Hermosa laguna natural rodeada de vegetación tropical perfecta para relajarse.</p>
+                            <button class="btn btn-primary">Agregar al itinerario</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Parque Principal" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Parque Principal de Ortega</h3>
+                            <p class="card-description">Corazón social y cultural del municipio con arquitectura colonial.</p>
+                            <button class="btn btn-primary">Agregar al itinerario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hoteles" class="section hoteles-section">
+            <div class="container">
+                <h2 class="section-title">🏨 Hoteles y Hospedaje</h2>
+                <p class="section-subtitle">Encuentra el alojamiento perfecto para tu estadía</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop" alt="Hotel Calle Real" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Hotel Calle Real</h3>
+                            <div class="card-rating">⭐⭐⭐⭐</div>
+                            <p class="card-price">$120.000 / noche</p>
+                            <p class="card-description">Elegante hotel en el corazón de Ortega con comodidad moderna.</p>
+                            <button class="btn btn-primary">Agregar al itinerario</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop" alt="Hotel Loren's" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">Hotel Loren's</h3>
+                            <div class="card-rating">⭐⭐⭐</div>
+                            <p class="card-price">$85.000 / noche</p>
+                            <p class="card-description">Acogedor hotel familiar con hospitalidad característica de Ortega.</p>
+                            <button class="btn btn-primary">Agregar al itinerario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="itinerario" class="section itinerario-section">
+            <div class="container">
+                <h2 class="section-title">📋 Mi Itinerario de Viaje</h2>
+                <p class="section-subtitle">Revisa y organiza tu selección personalizada</p>
+                
+                <div class="itinerario-summary">
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">elementos seleccionados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">$205.000</span>
+                            <span class="stat-label">costo estimado</span>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="btn btn-secondary">🗑️ Limpiar Todo</button>
+                        <button class="btn btn-primary">📤 Compartir Itinerario</button>
+                    </div>
+                </div>
+
+                <div class="empty-state">
+                    <p>✅ Prueba visual completada</p>
+                    <p>Este archivo es solo para verificar que los estilos CSS funcionan correctamente. Para funcionalidad completa, usa index.html con el backend corriendo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Descubre Ortega - Turismo en el Tolima</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurantes - Descubre Ortega</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🌿 Descubre Ortega</h1>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="sobre-ortega.html" class="nav-link">Sobre Ortega</a></li>
+                    <li><a href="lugares.html" class="nav-link">Lugares</a></li>
+                    <li><a href="hoteles.html" class="nav-link">Hoteles</a></li>
+                    <li><a href="restaurantes.html" class="nav-link active">Restaurantes</a></li>
+                    <li><a href="transporte.html" class="nav-link">Transporte</a></li>
+                    <li><a href="carrito.html" class="nav-link cart-link">🛒 Mi Itinerario (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Gastronomía de Ortega</h1>
+                <p class="page-subtitle">Disfruta de los sabores auténticos del Tolima en nuestros mejores restaurantes</p>
+            </div>
+        </section>
+
+        <!-- Restaurants Section -->
+        <section class="restaurants-section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2 class="intro-title">🍽️ Restaurantes y Gastronomía</h2>
+                    <p class="intro-text">
+                        La gastronomía de Ortega es una mezcla perfecta entre la tradición tolimense y sabores contemporáneos. 
+                        Desde la auténtica lechona hasta platos internacionales, nuestros restaurantes ofrecen experiencias 
+                        culinarias que deleitarán tu paladar y te conectarán con nuestra cultura.
+                    </p>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-container">
+                    <h3 class="filters-title">Filtrar por tipo de cocina:</h3>
+                    <div id="cuisine-filters" class="category-filters">
+                        <button class="filter-btn active" data-cuisine="all">Todos</button>
+                        <!-- Dynamic filter buttons will be added here -->
+                    </div>
+                </div>
+
+                <!-- Restaurants Grid -->
+                <div id="restaurants-grid" class="restaurants-grid">
+                    <div class="loading">Cargando restaurantes...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for restaurant details -->
+        <div id="restaurant-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-body">
+                    <!-- Modal content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Descubre Ortega. Promoviendo el turismo en el Tolima.</p>
+        </div>
+    </footer>
+
+    <script src="cart-script.js"></script>
+    <script src="restaurants-script.js"></script>
+</body>
+</html>

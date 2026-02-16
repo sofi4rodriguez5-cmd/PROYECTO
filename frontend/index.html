@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre Ortega - Turismo en Tolima</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- VENTANA LOGIN -->
+    <section id="view-login" class="view-section active">
+        <div class="login-container">
+            <div class="login-box">
+                <h1 class="login-title">🌿 Descubre Ortega</h1>
+                <p class="login-subtitle">Turismo en el Tolima</p>
+                
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="username" name="username" required placeholder="Ingresa tu usuario">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-login">Iniciar Sesión</button>
+                    
+                    <div class="login-help">
+                        <p><strong>Usuarios de prueba:</strong></p>
+                        <p>👤 Usuario: <code>usuario</code> / <code>1234</code></p>
+                        <p>🛠️ Admin: <code>admin</code> / <code>admin</code></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <header class="header" id="main-header" style="display: none;">
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🌿 Descubre Ortega</h1>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" data-view="inicio">Inicio</a></li>
+                    <li><a href="#" class="nav-link" data-view="lugares">Lugares</a></li>
+                    <li><a href="#" class="nav-link" data-view="hoteles">Hoteles</a></li>
+                    <li><a href="#" class="nav-link" data-view="restaurantes">Restaurantes</a></li>
+                    <li><a href="#" class="nav-link" data-view="transporte">Transporte</a></li>
+                    <li><a href="#" class="nav-link" data-view="perfil">👤 Mi Perfil</a></li>
+                    <li><a href="#" class="nav-link cart-link" data-view="carrito">🛒 Mi Carrito (<span id="cart-count">0</span>)</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link" id="settings-dropdown-toggle">⚙️ Ajustes ▼</a>
+                        <ul class="dropdown-menu" id="settings-dropdown">
+                            <li><a href="#" class="dropdown-item" data-view="ajustes-usuario">👤 Ajustes de Usuario</a></li>
+                            <li id="admin-settings-item" style="display: none;"><a href="#" class="dropdown-item" data-view="ajustes-admin">🛠️ Ajustes de Administrador</a></li>
+                        </ul>
+                    </li>
+                    <li id="admin-menu-item" style="display: none;"><a href="#" class="nav-link" data-view="admin">📊 Panel Admin</a></li>
+                    <li><a href="#" class="nav-link" id="logout-btn">🚪 Salir</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- VENTANA INICIO -->
+        <section id="view-inicio" class="view-section">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Bienvenido a Ortega</h1>
+                    <p class="hero-subtitle">Descubre la belleza natural y cultural del corazón del Tolima</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button" data-view="lugares">Explorar Lugares</a>
+                        <a href="#" class="cta-button secondary" data-view="hoteles">Ver Alojamiento</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container" style="padding: 4rem 0;">
+                <h2 class="section-title">¿Qué puedes encontrar en Ortega?</h2>
+                <div class="overview-grid">
+                    <div class="overview-card clickable-card" data-view="lugares">
+                        <span class="card-icon">🏞️</span>
+                        <h3>Lugares Turísticos</h3>
+                        <p>Descubre paisajes naturales, cerros, lagunas y sitios históricos</p>
+                        <a href="#" class="card-link" data-view="lugares">Explorar</a>
+                    </div>
+                    <div class="overview-card clickable-card" data-view="hoteles">
+                        <span class="card-icon">🏨</span>
+                        <h3>Alojamiento</h3>
+                        <p>Encuentra hoteles y posadas cómodas para tu estadía</p>
+                        <a href="#" class="card-link" data-view="hoteles">Ver opciones</a>
+                    </div>
+                    <div class="overview-card clickable-card" data-view="restaurantes">
+                        <span class="card-icon">🍽️</span>
+                        <h3>Gastronomía</h3>
+                        <p>Disfruta de la auténtica comida tolimense y más</p>
+                        <a href="#" class="card-link" data-view="restaurantes">Ver restaurantes</a>
+                    </div>
+                    <div class="overview-card clickable-card" data-view="transporte">
+                        <span class="card-icon">🚌</span>
+                        <h3>Transporte</h3>
+                        <p>Conoce las opciones para llegar y moverte</p>
+                        <a href="#" class="card-link" data-view="transporte">Ver opciones</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LUGARES DESTACADOS -->
+            <div class="container featured-section">
+                <h2 class="section-title">🏞️ Lugares Turísticos Destacados</h2>
+                <p class="section-subtitle">Descubre los sitios más hermosos de Ortega</p>
+                <div class="featured-grid" id="featured-lugares">
+                    <!-- Se cargará dinámicamente -->
+                </div>
+            </div>
+
+            <!-- HOTELES RECOMENDADOS -->
+            <div class="container featured-section">
+                <h2 class="section-title">🏨 Hoteles Recomendados</h2>
+                <p class="section-subtitle">Encuentra el alojamiento perfecto para tu estadía</p>
+                <div class="featured-grid" id="featured-hoteles">
+                    <!-- Se cargará dinámicamente -->
+                </div>
+            </div>
+
+            <!-- RESTAURANTES POPULARES -->
+            <div class="container featured-section">
+                <h2 class="section-title">🍽️ Restaurantes Populares</h2>
+                <p class="section-subtitle">Disfruta de los sabores auténticos del Tolima</p>
+                <div class="featured-grid" id="featured-restaurantes">
+                    <!-- Se cargará dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA LUGARES -->
+        <section id="view-lugares" class="view-section">
+            <div class="section lugares-section">
+                <div class="container">
+                    <h2 class="section-title">🏞️ Lugares Turísticos</h2>
+                    <p class="section-subtitle">Descubre los sitios más hermosos de Ortega</p>
+                    
+                    <div class="cards-grid" id="lugares-grid">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA HOTELES -->
+        <section id="view-hoteles" class="view-section">
+            <div class="section hoteles-section">
+                <div class="container">
+                    <h2 class="section-title">🏨 Hoteles y Hospedaje</h2>
+                    <p class="section-subtitle">Encuentra el alojamiento perfecto para tu estadía</p>
+                    
+                    <div class="cards-grid" id="hoteles-grid">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA RESTAURANTES -->
+        <section id="view-restaurantes" class="view-section">
+            <div class="section restaurantes-section">
+                <div class="container">
+                    <h2 class="section-title">🍽️ Restaurantes y Gastronomía</h2>
+                    <p class="section-subtitle">Disfruta de los sabores auténticos del Tolima</p>
+                    
+                    <div class="cards-grid" id="restaurantes-grid">
+                        <!-- Se cargará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA TRANSPORTE -->
+        <section id="view-transporte" class="view-section">
+            <div class="section transporte-section">
+                <div class="container">
+                    <h2 class="section-title">🚌 Medios de Transporte</h2>
+                    <p class="section-subtitle">Conoce las opciones para llegar y moverte por Ortega</p>
+                    
+                    <div class="transport-category">
+                        <h3 class="category-subtitle">🚍 Transporte Intermunicipal</h3>
+                        <div class="cards-grid" id="transporte-intermunicipal-grid">
+                            <!-- Se cargará dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="transport-category">
+                        <h3 class="category-subtitle">🚕 Transporte Local</h3>
+                        <div class="cards-grid" id="transporte-local-grid">
+                            <!-- Se cargará dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="transport-category">
+                        <h3 class="category-subtitle">🚗 Transporte Particular</h3>
+                        <div class="cards-grid" id="transporte-particular-grid">
+                            <!-- Se cargará dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA CARRITO -->
+        <section id="view-carrito" class="view-section">
+            <div class="section itinerario-section">
+                <div class="container">
+                    <h2 class="section-title">🛒 Mi Carrito de Viaje</h2>
+                    <p class="section-subtitle">Revisa y organiza tu selección personalizada</p>
+                    
+                    <div class="itinerario-summary">
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-items">0</span>
+                                <span class="stat-label">elementos seleccionados</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-price">$0</span>
+                                <span class="stat-label">costo estimado</span>
+                            </div>
+                        </div>
+                        <div class="summary-actions">
+                            <button class="btn btn-secondary" onclick="clearCart()">🗑️ Limpiar Todo</button>
+                            <button class="btn btn-secondary" onclick="shareCart()">📤 Compartir</button>
+                            <button class="btn btn-primary" id="btn-pagar" onclick="openPaymentModal()" disabled>💳 Pagar</button>
+                        </div>
+                    </div>
+
+                    <div id="cart-content" class="cart-content">
+                        <div class="empty-state">
+                            <p>🛒 Tu carrito está vacío</p>
+                            <p>Comienza a agregar lugares, hoteles, restaurantes y opciones de transporte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA PERFIL -->
+        <section id="view-perfil" class="view-section">
+            <div class="section perfil-section">
+                <div class="container">
+                    <h2 class="section-title">👤 Mi Perfil</h2>
+                    <p class="section-subtitle">Información de tu cuenta y actividad</p>
+                    
+                    <div class="perfil-container">
+                        <div class="perfil-card">
+                            <h3>📋 Información Personal</h3>
+                            <div class="perfil-info">
+                                <div class="info-item">
+                                    <span class="info-label">Usuario:</span>
+                                    <span class="info-value" id="perfil-username">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Rol:</span>
+                                    <span class="info-value" id="perfil-role">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Miembro desde:</span>
+                                    <span class="info-value" id="perfil-member-since">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="perfil-card">
+                            <h3>📊 Estadísticas</h3>
+                            <div class="perfil-stats">
+                                <div class="stat-box">
+                                    <span class="stat-icon">📅</span>
+                                    <span class="stat-value" id="perfil-reservas">0</span>
+                                    <span class="stat-label">Reservas</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-icon">💳</span>
+                                    <span class="stat-value" id="perfil-pagos">0</span>
+                                    <span class="stat-label">Pagos</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-icon">💰</span>
+                                    <span class="stat-value" id="perfil-total">$0</span>
+                                    <span class="stat-label">Total Gastado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="perfil-card full-width">
+                            <h3>📅 Mis Reservas</h3>
+                            <div id="perfil-reservas-list" class="reservas-list">
+                                <p class="empty-message">No tienes reservas realizadas</p>
+                            </div>
+                        </div>
+
+                        <div class="perfil-card full-width">
+                            <h3>💳 Historial de Pagos</h3>
+                            <div id="perfil-pagos-list" class="pagos-list">
+                                <p class="empty-message">No tienes pagos realizados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA ADMIN -->
+        <section id="view-admin" class="view-section">
+            <div class="section admin-section">
+                <div class="container">
+                    <h2 class="section-title">⚙️ Panel de Administración</h2>
+                    <p class="section-subtitle">Gestión del sistema turístico</p>
+                    
+                    <div class="admin-dashboard">
+                        <div class="admin-card">
+                            <h3>📊 Estadísticas</h3>
+                            <div class="admin-stats">
+                                <div class="admin-stat-item">
+                                    <span class="admin-stat-number">4</span>
+                                    <span class="admin-stat-label">Lugares Turísticos</span>
+                                </div>
+                                <div class="admin-stat-item">
+                                    <span class="admin-stat-number">3</span>
+                                    <span class="admin-stat-label">Hoteles</span>
+                                </div>
+                                <div class="admin-stat-item">
+                                    <span class="admin-stat-number">7</span>
+                                    <span class="admin-stat-label">Restaurantes</span>
+                                </div>
+                                <div class="admin-stat-item">
+                                    <span class="admin-stat-number">9</span>
+                                    <span class="admin-stat-label">Opciones de Transporte</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3>👥 Usuarios Activos</h3>
+                            <p>Sistema de gestión de usuarios (Funcionalidad demo)</p>
+                            <ul class="admin-list">
+                                <li>👤 Usuario estándar - Acceso completo a navegación</li>
+                                <li>🛠️ Administrador - Acceso a panel admin</li>
+                            </ul>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3>🛒 Carritos Activos</h3>
+                            <p>Monitoreo de carritos de compra (Funcionalidad demo)</p>
+                            <div class="admin-info">
+                                <p>Total de items en carrito actual: <strong id="admin-cart-count">0</strong></p>
+                                <p>Valor estimado: <strong id="admin-cart-value">$0</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3>⚙️ Configuración</h3>
+                            <p>Panel de configuración del sistema</p>
+                            <div class="admin-actions">
+                                <button class="btn btn-secondary" onclick="showAdminPanel('gestion-contenido')">📦 Gestionar Contenido</button>
+                                <button class="btn btn-secondary" onclick="showAdminPanel('reportes')">📊 Ver Reportes</button>
+                                <button class="btn btn-secondary" onclick="showAdminPanel('configuracion')">⚙️ Configuración</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA AJUSTES USUARIO -->
+        <section id="view-ajustes-usuario" class="view-section">
+            <div class="section ajustes-section">
+                <div class="container">
+                    <h2 class="section-title">👤 Ajustes de Usuario</h2>
+                    <p class="section-subtitle">Personaliza tu experiencia en Descubre Ortega</p>
+                    
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>🎨 Apariencia</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Tema de la aplicación</strong>
+                                    <p>Cambia entre tema claro y oscuro</p>
+                                </div>
+                                <button class="btn btn-primary" id="toggle-theme-btn" onclick="toggleTheme()">
+                                    <span id="theme-text">Cambiar a Oscuro</span>
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Mostrar imágenes</strong>
+                                    <p>Oculta las imágenes para cargar más rápido</p>
+                                </div>
+                                <button class="btn btn-secondary" id="toggle-images-btn" onclick="toggleImages()">
+                                    <span id="images-text">Ocultar Imágenes</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>🛒 Carrito</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Limpiar carrito</strong>
+                                    <p>Elimina todos los elementos del carrito</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="clearCartFromSettings()">
+                                    🗑️ Limpiar Carrito
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Estado del carrito</strong>
+                                    <p>Items actuales: <strong id="settings-cart-count">0</strong></p>
+                                    <p>Total: <strong id="settings-cart-total">$0</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>💳 Métodos de Pago</h3>
+                            <div id="payment-methods-list" class="payment-methods-list">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                            <div class="add-payment-section">
+                                <h4>➕ Agregar Método de Pago</h4>
+                                <form id="add-payment-form" class="add-payment-form">
+                                    <select id="payment-type" required>
+                                        <option value="">Seleccionar tipo</option>
+                                        <option value="Tarjeta">💳 Tarjeta</option>
+                                        <option value="Efectivo">💵 Efectivo</option>
+                                        <option value="Transferencia">🏦 Transferencia</option>
+                                    </select>
+                                    <input type="text" id="payment-detail" placeholder="Detalles (ej: **** 1234)" required>
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>📅 Mi Calendario</h3>
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button class="btn-calendar" onclick="changeMonth(-1)">◀</button>
+                                    <span id="calendar-month-year"></span>
+                                    <button class="btn-calendar" onclick="changeMonth(1)">▶</button>
+                                </div>
+                                <div class="calendar-grid" id="calendar-grid">
+                                    <!-- Se generará dinámicamente -->
+                                </div>
+                                <div class="calendar-legend">
+                                    <span class="legend-item"><span class="legend-dot booked"></span> Reservado</span>
+                                    <span class="legend-item"><span class="legend-dot today"></span> Hoy</span>
+                                </div>
+                            </div>
+                            <div id="calendar-events-list" class="calendar-events-list">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>👤 Cuenta</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Usuario actual</strong>
+                                    <p id="current-user-display">No disponible</p>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Cerrar sesión</strong>
+                                    <p>Salir de tu cuenta actual</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="logoutFromSettings()">
+                                    🚪 Cerrar Sesión
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>🔄 Sistema</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Restablecer configuración</strong>
+                                    <p>Vuelve a los valores predeterminados</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="resetSettings()">
+                                    🔄 Restablecer
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Limpiar datos locales</strong>
+                                    <p>Elimina toda la información guardada</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="clearLocalData()">
+                                    🗑️ Limpiar Datos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA AJUSTES ADMINISTRADOR -->
+        <section id="view-ajustes-admin" class="view-section">
+            <div class="section ajustes-section">
+                <div class="container">
+                    <h2 class="section-title">🛠️ Ajustes de Administrador</h2>
+                    <p class="section-subtitle">Gestión avanzada del sistema</p>
+                    
+                    <div class="admin-settings-container">
+                        <div class="admin-settings-card">
+                            <h3>👥 Gestión de Usuarios</h3>
+                            
+                            <div class="users-list" id="users-list">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                            
+                            <div class="add-user-section">
+                                <h4>➕ Agregar Nuevo Usuario</h4>
+                                <form id="add-user-form" class="add-user-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="new-username">Usuario</label>
+                                            <input type="text" id="new-username" required placeholder="Nombre de usuario">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-password">Contraseña</label>
+                                            <input type="password" id="new-password" required placeholder="Contraseña">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-role">Rol</label>
+                                            <select id="new-role" required>
+                                                <option value="user">Usuario</option>
+                                                <option value="admin">Administrador</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">➕ Agregar Usuario</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="admin-settings-card">
+                            <h3>🏨 Gestión de Contenido</h3>
+                            <div class="content-management-tabs">
+                                <button class="tab-btn active" onclick="showContentTab('lugares')">🏞️ Lugares</button>
+                                <button class="tab-btn" onclick="showContentTab('hoteles')">🏨 Hoteles</button>
+                                <button class="tab-btn" onclick="showContentTab('restaurantes')">🍽️ Restaurantes</button>
+                                <button class="tab-btn" onclick="showContentTab('transporte')">🚌 Transporte</button>
+                            </div>
+                            
+                            <div id="content-tab-lugares" class="content-tab active">
+                                <div class="content-list" id="admin-lugares-list"></div>
+                                <button class="btn btn-primary" onclick="showAddContentForm('lugar')">➕ Agregar Lugar</button>
+                            </div>
+                            
+                            <div id="content-tab-hoteles" class="content-tab">
+                                <div class="content-list" id="admin-hoteles-list"></div>
+                                <button class="btn btn-primary" onclick="showAddContentForm('hotel')">➕ Agregar Hotel</button>
+                            </div>
+                            
+                            <div id="content-tab-restaurantes" class="content-tab">
+                                <div class="content-list" id="admin-restaurantes-list"></div>
+                                <button class="btn btn-primary" onclick="showAddContentForm('restaurante')">➕ Agregar Restaurante</button>
+                            </div>
+                            
+                            <div id="content-tab-transporte" class="content-tab">
+                                <div class="content-list" id="admin-transporte-list"></div>
+                                <button class="btn btn-primary" onclick="showAddContentForm('transporte')">➕ Agregar Transporte</button>
+                            </div>
+                        </div>
+
+                        <div class="admin-settings-card">
+                            <h3>📊 Estadísticas del Sistema</h3>
+                            <div class="system-stats">
+                                <div class="stat-box">
+                                    <span class="stat-icon">👥</span>
+                                    <span class="stat-value" id="total-users">0</span>
+                                    <span class="stat-label">Usuarios Totales</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-icon">🛠️</span>
+                                    <span class="stat-value" id="total-admins">0</span>
+                                    <span class="stat-label">Administradores</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-icon">🏞️</span>
+                                    <span class="stat-value" id="stat-lugares">8</span>
+                                    <span class="stat-label">Lugares</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-icon">🏨</span>
+                                    <span class="stat-value" id="stat-hoteles">6</span>
+                                    <span class="stat-label">Hoteles</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admin-settings-card">
+                            <h3>⚙️ Acciones del Sistema</h3>
+                            <div class="system-actions">
+                                <button class="btn btn-secondary" onclick="exportUsers()">📥 Exportar Usuarios</button>
+                                <button class="btn btn-secondary" onclick="viewSystemLogs()">📋 Ver Logs</button>
+                                <button class="btn btn-secondary" onclick="resetSystem()">🔄 Reiniciar Sistema</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA GESTIÓN DE CONTENIDO ADMIN -->
+        <section id="view-admin-gestion-contenido" class="view-section">
+            <div class="section admin-section">
+                <div class="container">
+                    <div class="admin-panel-header">
+                        <button class="btn btn-secondary" onclick="showView('admin')">← Volver al Panel</button>
+                        <h2 class="section-title">📦 Gestión de Contenido</h2>
+                    </div>
+                    
+                    <div class="content-management-container">
+                        <div class="content-management-tabs">
+                            <button class="tab-btn active" onclick="showAdminContentTab('lugares')">🏞️ Lugares</button>
+                            <button class="tab-btn" onclick="showAdminContentTab('hoteles')">🏨 Hoteles</button>
+                            <button class="tab-btn" onclick="showAdminContentTab('restaurantes')">🍽️ Restaurantes</button>
+                            <button class="tab-btn" onclick="showAdminContentTab('transporte')">🚌 Transporte</button>
+                        </div>
+                        
+                        <div id="admin-content-tab-lugares" class="admin-content-tab active">
+                            <div class="content-list" id="admin-content-lugares-list"></div>
+                            <button class="btn btn-primary" onclick="showAddAdminContentForm('lugar')">➕ Agregar Lugar</button>
+                        </div>
+                        
+                        <div id="admin-content-tab-hoteles" class="admin-content-tab">
+                            <div class="content-list" id="admin-content-hoteles-list"></div>
+                            <button class="btn btn-primary" onclick="showAddAdminContentForm('hotel')">➕ Agregar Hotel</button>
+                        </div>
+                        
+                        <div id="admin-content-tab-restaurantes" class="admin-content-tab">
+                            <div class="content-list" id="admin-content-restaurantes-list"></div>
+                            <button class="btn btn-primary" onclick="showAddAdminContentForm('restaurante')">➕ Agregar Restaurante</button>
+                        </div>
+                        
+                        <div id="admin-content-tab-transporte" class="admin-content-tab">
+                            <div class="content-list" id="admin-content-transporte-list"></div>
+                            <button class="btn btn-primary" onclick="showAddAdminContentForm('transporte')">➕ Agregar Transporte</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA REPORTES ADMIN -->
+        <section id="view-admin-reportes" class="view-section">
+            <div class="section admin-section">
+                <div class="container">
+                    <div class="admin-panel-header">
+                        <button class="btn btn-secondary" onclick="showView('admin')">← Volver al Panel</button>
+                        <h2 class="section-title">📊 Reportes del Sistema</h2>
+                    </div>
+                    
+                    <div class="reports-container">
+                        <div class="report-card">
+                            <div class="report-icon">📅</div>
+                            <div class="report-content">
+                                <h3>Reservas Realizadas</h3>
+                                <p class="report-number" id="report-reservas">0</p>
+                                <p class="report-label">Total de reservas en calendario</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="report-icon">💳</div>
+                            <div class="report-content">
+                                <h3>Pagos Realizados</h3>
+                                <p class="report-number" id="report-pagos">0</p>
+                                <p class="report-label">Total de transacciones</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="report-icon">💰</div>
+                            <div class="report-content">
+                                <h3>Ingresos Totales</h3>
+                                <p class="report-number" id="report-ingresos">$0</p>
+                                <p class="report-label">Suma de todos los pagos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="report-icon">👥</div>
+                            <div class="report-content">
+                                <h3>Usuarios Registrados</h3>
+                                <p class="report-number" id="report-usuarios">0</p>
+                                <p class="report-label">Total de usuarios en el sistema</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card full-width">
+                            <h3>🏆 Elementos Más Agregados al Carrito</h3>
+                            <div id="report-top-items" class="top-items-list">
+                                <p class="empty-message">No hay datos suficientes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card full-width">
+                            <h3>📈 Métodos de Pago Más Usados</h3>
+                            <div id="report-payment-methods" class="payment-methods-chart">
+                                <p class="empty-message">No hay datos suficientes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENTANA CONFIGURACIÓN ADMIN -->
+        <section id="view-admin-configuracion" class="view-section">
+            <div class="section admin-section">
+                <div class="container">
+                    <div class="admin-panel-header">
+                        <button class="btn btn-secondary" onclick="showView('admin')">← Volver al Panel</button>
+                        <h2 class="section-title">⚙️ Configuración del Sistema</h2>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>🎨 Apariencia</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Tema del sistema</strong>
+                                    <p>Cambiar entre tema claro y oscuro</p>
+                                </div>
+                                <button class="btn btn-primary" onclick="toggleTheme()">
+                                    <span id="admin-theme-text">Cambiar Tema</span>
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Mostrar imágenes</strong>
+                                    <p>Activar o desactivar imágenes del sistema</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="toggleImages()">
+                                    <span id="admin-images-text">Ocultar Imágenes</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>🗑️ Gestión de Datos</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Limpiar datos del sistema</strong>
+                                    <p>Elimina todos los datos excepto usuarios predeterminados</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="clearSystemData()">
+                                    🗑️ Limpiar Datos
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Reiniciar sistema</strong>
+                                    <p>Vuelve a los valores de fábrica</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="resetSystemAdmin()">
+                                    🔄 Reiniciar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>👤 Cuenta</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Usuario actual</strong>
+                                    <p id="admin-current-user">Administrador</p>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Cerrar sesión</strong>
+                                    <p>Salir del panel de administración</p>
+                                </div>
+                                <button class="btn btn-secondary" onclick="logoutFromSettings()">
+                                    🚪 Cerrar Sesión
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL PAGO -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content payment-modal-content">
+                <span class="close" onclick="closePaymentModal()">&times;</span>
+                <h2>💳 Procesar Pago</h2>
+                
+                <div class="payment-summary">
+                    <h3>📋 Resumen de Compra</h3>
+                    <div id="payment-items-summary"></div>
+                    <div class="payment-total">
+                        <strong>Total a Pagar:</strong>
+                        <span id="payment-total-amount">$0</span>
+                    </div>
+                </div>
+
+                <div class="payment-method-selection">
+                    <h3>💰 Método de Pago</h3>
+                    <div class="payment-methods-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="Tarjeta" checked>
+                            <span class="payment-option-content">
+                                <span class="payment-option-icon">💳</span>
+                                <span class="payment-option-text">Tarjeta de Crédito/Débito</span>
+                            </span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="Efectivo">
+                            <span class="payment-option-content">
+                                <span class="payment-option-icon">💵</span>
+                                <span class="payment-option-text">Efectivo</span>
+                            </span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="Transferencia">
+                            <span class="payment-option-content">
+                                <span class="payment-option-icon">🏦</span>
+                                <span class="payment-option-text">Transferencia Bancaria</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <button class="btn btn-secondary" onclick="closePaymentModal()">Cancelar</button>
+                    <button class="btn btn-primary" onclick="confirmPayment()">✅ Confirmar Pago</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL AGREGAR CONTENIDO -->
+        <div id="add-content-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddContentModal()">&times;</span>
+                <h2 id="modal-title">Agregar Contenido</h2>
+                <form id="add-content-form">
+                    <div class="form-group">
+                        <label for="content-name">Nombre</label>
+                        <input type="text" id="content-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content-image">URL de Imagen</label>
+                        <input type="url" id="content-image" required placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="content-description">Descripción</label>
+                        <textarea id="content-description" required rows="3"></textarea>
+                    </div>
+                    <div class="form-group" id="content-price-group">
+                        <label for="content-price">Precio</label>
+                        <input type="number" id="content-price" min="0" value="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="main-footer" style="display: none;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🌿 Descubre Ortega</h3>
+                    <p>Tu portal de turismo en el corazón del Tolima. Explora la belleza natural y cultural de Ortega.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-view="lugares">Lugares Turísticos</a></li>
+                        <li><a href="#" data-view="hoteles">Hoteles</a></li>
+                        <li><a href="#" data-view="restaurantes">Restaurantes</a></li>
+                        <li><a href="#" data-view="transporte">Transporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📧 info@descubreortega.com</p>
+                    <p>📱 +57 300 123 4567</p>
+                    <p>📍 Ortega, Tolima, Colombia</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘 Facebook</a>
+                        <a href="#" class="social-link">📷 Instagram</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Descubre Ortega - Turismo en el Tolima. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index-script.js"></script>
+</body>
+</html>

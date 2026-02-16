@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte - Descubre Ortega</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🌿 Descubre Ortega</h1>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="sobre-ortega.html" class="nav-link">Sobre Ortega</a></li>
+                    <li><a href="lugares.html" class="nav-link">Lugares</a></li>
+                    <li><a href="hoteles.html" class="nav-link">Hoteles</a></li>
+                    <li><a href="restaurantes.html" class="nav-link">Restaurantes</a></li>
+                    <li><a href="transporte.html" class="nav-link active">Transporte</a></li>
+                    <li><a href="carrito.html" class="nav-link cart-link">🛒 Mi Itinerario (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Transporte en Ortega</h1>
+                <p class="page-subtitle">Conoce las mejores opciones para llegar y moverte por nuestro municipio</p>
+            </div>
+        </section>
+
+        <!-- Transportation Section -->
+        <section class="transportation-section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2 class="intro-title">🚍 Medios de Transporte</h2>
+                    <p class="intro-text">
+                        Llegar a Ortega y moverse por el municipio es fácil gracias a las diversas opciones de transporte disponibles. 
+                        Desde buses intermunicipales hasta servicios locales especializados, encuentra la mejor alternativa 
+                        para tu viaje y desplazamiento por nuestros hermosos paisajes.
+                    </p>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-container">
+                    <h3 class="filters-title">Filtrar por tipo de transporte:</h3>
+                    <div id="transport-filters" class="category-filters">
+                        <button class="filter-btn active" data-transport="all">Todos</button>
+                        <!-- Dynamic filter buttons will be added here -->
+                    </div>
+                </div>
+
+                <!-- Transportation Grid -->
+                <div id="transportation-grid" class="transportation-grid">
+                    <div class="loading">Cargando opciones de transporte...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for transport details -->
+        <div id="transport-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-body">
+                    <!-- Modal content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Descubre Ortega. Promoviendo el turismo en el Tolima.</p>
+        </div>
+    </footer>
+
+    <script src="cart-script.js"></script>
+    <script src="transport-script.js"></script>
+</body>
+</html>

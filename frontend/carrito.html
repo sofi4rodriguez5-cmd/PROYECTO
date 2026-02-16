@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Itinerario - Descubre Ortega</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🌿 Descubre Ortega</h1>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="sobre-ortega.html" class="nav-link">Sobre Ortega</a></li>
+                    <li><a href="lugares.html" class="nav-link">Lugares</a></li>
+                    <li><a href="hoteles.html" class="nav-link">Hoteles</a></li>
+                    <li><a href="restaurantes.html" class="nav-link">Restaurantes</a></li>
+                    <li><a href="transporte.html" class="nav-link">Transporte</a></li>
+                    <li><a href="carrito.html" class="nav-link active">Mi Itinerario <span id="cart-count" class="cart-count">0</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Hero de la página -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">🗂️ Mi Itinerario de Viaje</h1>
+                <p class="page-subtitle">Revisa y organiza tu selección personalizada para visitar Ortega</p>
+            </div>
+        </section>
+
+        <!-- Sección del Carrito -->
+        <section class="cart-section">
+            <div class="container">
+                <div class="cart-header">
+                    <div class="cart-summary">
+                        <h2>Resumen del Itinerario</h2>
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-items">0</span>
+                                <span class="stat-label">elementos seleccionados</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-price">$0</span>
+                                <span class="stat-label">costo estimado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-actions">
+                        <button id="clear-cart" class="btn-secondary">🗑️ Limpiar Todo</button>
+                        <button id="share-itinerary" class="btn-primary">📤 Compartir Itinerario</button>
+                    </div>
+                </div>
+
+                <!-- Contenido del carrito vacío -->
+                <div id="empty-cart" class="empty-cart">
+                    <div class="empty-cart-content">
+                        <div class="empty-icon">🛒</div>
+                        <h3>Tu itinerario está vacío</h3>
+                        <p>Comienza a agregar lugares, hoteles, restaurantes y opciones de transporte para crear tu viaje perfecto a Ortega.</p>
+                        <div class="empty-cart-actions">
+                            <a href="lugares.html" class="btn-primary">Explorar Lugares</a>
+                            <a href="hoteles.html" class="btn-secondary">Ver Hoteles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido del carrito con elementos -->
+                <div id="cart-content" class="cart-content" style="display: none;">
+                    <!-- Lugares Turísticos -->
+                    <div id="places-section" class="cart-category-section">
+                        <h3 class="category-title">🏞️ Lugares Turísticos</h3>
+                        <div id="places-items" class="cart-items-grid">
+                            <!-- Items cargados dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Hoteles -->
+                    <div id="hotels-section" class="cart-category-section">
+                        <h3 class="category-title">🏨 Alojamiento</h3>
+                        <div id="hotels-items" class="cart-items-grid">
+                            <!-- Items cargados dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Restaurantes -->
+                    <div id="restaurants-section" class="cart-category-section">
+                        <h3 class="category-title">🍽️ Restaurantes</h3>
+                        <div id="restaurants-items" class="cart-items-grid">
+                            <!-- Items cargados dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Transporte -->
+                    <div id="transport-section" class="cart-category-section">
+                        <h3 class="category-title">🚌 Transporte</h3>
+                        <div id="transport-items" class="cart-items-grid">
+                            <!-- Items cargados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nota informativa -->
+                <div class="cart-note">
+                    <p><strong>Nota:</strong> Este es un sistema demostrativo. Los precios son estimados y no incluyen reservas reales ni pagos. El objetivo es ayudarte a planificar tu visita a Ortega, Tolima.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Descubre Ortega. Promoviendo el turismo en el Tolima.</p>
+        </div>
+    </footer>
+
+    <script src="cart-script.js"></script>
+</body>
+</html>
